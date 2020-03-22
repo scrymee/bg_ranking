@@ -20,12 +20,14 @@
 						    <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn icon @click.native="GetGameDetail(item.gameId)">
-            <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+            <v-icon>{{ show ? 'V' : '^' }}</v-icon>
           </v-btn>
         </v-card-actions>
         <v-slide-y-transition>
-          <v-card-text :v-if="show[i]">
-            I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+          <v-card-text :v-if="detail.gameId = item.gemeId">
+						{{detail.bggRating}}<br>
+						プレイ人数：{{detail.minPlayers}} - {{detail.maxPlayers}}<br>
+						プレイ時間：{{detail.playingTime}}
           </v-card-text>
         </v-slide-y-transition>
           </v-card>
@@ -40,6 +42,7 @@
 		data () {
 			return {
 			show:[],
+			detail:[],
 			items: [
 				{
 					color: '#1F7087',
@@ -117,7 +120,8 @@
 				axios(obj).then(response => {
 					console.log(response.data);
 				//登録
-					console.log(response.data);
+					this.detail = response.data;
+					console.log(this.detail);
 				});
 
 			},
